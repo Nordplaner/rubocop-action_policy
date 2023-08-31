@@ -1,0 +1,27 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 3.0
+
+Layout/LineLength:
+  Max: 120
+
+Metrics/BlockLength:
+  Max: 75
+
+Naming/FileName:
+  Exclude:
+    - lib/rubocop-action_policy.rb
+
+RSpec/ExampleLength:
+  Max: 11
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: double_quotes
+
+Style/StringLiteralsInInterpolation:
+  Enabled: true
+  EnforcedStyle: double_quotes

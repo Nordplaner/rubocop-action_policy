@@ -20,7 +20,7 @@ RSpec.describe Rubocop::Cop::ActionPolicy::ApplicationPolicy do
   it "corrects controllers that subclass `ActionPolicy::Base`" do
     expect_offense(<<~RUBY)
       class MyPolicy < ActionPolicy::Base; end
-                       ^^^^^^^^^^^^^^^^^^ Policies should subclass `ApplicationPolicy`.
+                       ^^^^^^^^^^^^^^^^^^ ActionPolicy/ApplicationPolicy: Policies should subclass `ApplicationPolicy`.
     RUBY
 
     expect_correction(<<~RUBY)
@@ -32,7 +32,7 @@ RSpec.describe Rubocop::Cop::ActionPolicy::ApplicationPolicy do
     expect_offense(<<~RUBY)
       module Nested
         class MyPolicy < ActionPolicy::Base; end
-                         ^^^^^^^^^^^^^^^^^^ Policies should subclass `ApplicationPolicy`.
+                         ^^^^^^^^^^^^^^^^^^ ActionPolicy/ApplicationPolicy: Policies should subclass `ApplicationPolicy`.
       end
     RUBY
 
@@ -46,7 +46,7 @@ RSpec.describe Rubocop::Cop::ActionPolicy::ApplicationPolicy do
   it "corrects controllers defined in inline namespaces" do
     expect_offense(<<~RUBY)
       class Nested::MyPolicy < ActionPolicy::Base; end
-                               ^^^^^^^^^^^^^^^^^^ Policies should subclass `ApplicationPolicy`.
+                               ^^^^^^^^^^^^^^^^^^ ActionPolicy/ApplicationPolicy: Policies should subclass `ApplicationPolicy`.
     RUBY
 
     expect_correction(<<~RUBY)
@@ -57,7 +57,7 @@ RSpec.describe Rubocop::Cop::ActionPolicy::ApplicationPolicy do
   it "corrects controllers defined using Class.new" do
     expect_offense(<<~RUBY)
       MyPolicy = Class.new(ActionPolicy::Base)
-                           ^^^^^^^^^^^^^^^^^^ Policies should subclass `ApplicationPolicy`.
+                           ^^^^^^^^^^^^^^^^^^ ActionPolicy/ApplicationPolicy: Policies should subclass `ApplicationPolicy`.
     RUBY
 
     expect_correction(<<~RUBY)
@@ -68,7 +68,7 @@ RSpec.describe Rubocop::Cop::ActionPolicy::ApplicationPolicy do
   it "corrects nested controllers defined using Class.new" do
     expect_offense(<<~RUBY)
       Nested::MyPolicy = Class.new(ActionPolicy::Base)
-                                   ^^^^^^^^^^^^^^^^^^ Policies should subclass `ApplicationPolicy`.
+                                   ^^^^^^^^^^^^^^^^^^ ActionPolicy/ApplicationPolicy: Policies should subclass `ApplicationPolicy`.
     RUBY
 
     expect_correction(<<~RUBY)
@@ -79,7 +79,7 @@ RSpec.describe Rubocop::Cop::ActionPolicy::ApplicationPolicy do
   it "corrects anonymous controllers" do
     expect_offense(<<~RUBY)
       Class.new(ActionPolicy::Base) {}
-                ^^^^^^^^^^^^^^^^^^ Policies should subclass `ApplicationPolicy`.
+                ^^^^^^^^^^^^^^^^^^ ActionPolicy/ApplicationPolicy: Policies should subclass `ApplicationPolicy`.
     RUBY
 
     expect_correction(<<~RUBY)
